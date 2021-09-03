@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginRegister.Views.RegisterMovimientoPage"
+             Title="Registrar Movimiento"
+             xmlns:local="clr-namespace:LoginRegister.ViewModels">
+    <ContentPage.BindingContext>
+        <local:RegisterMovimientoViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="20,0,20,0" RowSpacing="20" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Entry Placeholder="MAQUINARIAS" FontSize="16" x:Name="EntryUserPassword" Text="{Binding MovimientoModel.Maquinarias, Mode=TwoWay}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1">
+                    <Entry Placeholder="HOROMETRO" FontSize="16" x:Name="EntryUserSector" Text="{Binding MovimientoModel.Horometro, Mode=TwoWay}"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2">
+                    <Entry Placeholder="KM" FontSize="16" x:Name="EntryUserLegajo" Text="{Binding MovimientoModel.Kilometraje, Mode=TwoWay}"/>
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <Entry Placeholder="COMBUSTIBLE" FontSize="16" x:Name="EntryUserCOMBUSTIBLE" Text="{Binding MovimientoModel.Combustible, Mode=TwoWay}"/>
+                </StackLayout>
+                <!--<Label Text="ID" FontSize="Medium" IsEnabled="False"/>
+                <Entry Text="{Binding MovimientoModel.Id, Mode=TwoWay}" FontSize="Medium" IsEnabled="False"/>
+                <Label Text="Maquinarias" FontSize="Medium"/>
+                <Entry Text="{Binding MovimientoModel.Maquinarias, Mode=TwoWay}" FontSize="Medium"/>
+                <Label Text="Descripcion" FontSize="Medium"/>
+                <Editor Text="{Binding MovimientoModel.Descripcion, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Combustible" FontSize="Medium"/>
+                <Editor Text="{Binding MovimientoModel.Combustible, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>
+                <Label Text="Kilometraje" FontSize="Medium"/>
+                <Editor Text="{Binding MovimientoModel.Kilometraje, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0"/>-->
+
+                <StackLayout Grid.Row="4">
+                    <Button Text="Registrar" WidthRequest="100" BackgroundColor="#FFC300" TextColor="Black" Command="{Binding cmdRegister}" />
+                    <Button Text="Cancelar" WidthRequest="100" Command="{Binding cmdCancel}" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

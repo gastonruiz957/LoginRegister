@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:LoginRegister.ViewModels"
+             xmlns:model ="clr-namespace:LoginRegister.Models"
+             x:Class="LoginRegister.Views.UserPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar Usuario" Command="{Binding cmdAddUser}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:UserViewModel" Command="{Binding cmdLoadUser}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+                <CollectionView ItemsSource="{Binding UserModels}" SelectionMode="None">
+                     <CollectionView.ItemTemplate>
+                          <DataTemplate>
+                            <StackLayout x:DataType="model:UserModel">
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Eliminar" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserViewModel}},Path=UserTappedDelete}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5">
+                                        <Frame CornerRadius="10" HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout>
+                                                    <Label Grid.Column="1" Text="Usuario: " FontSize="20" FontAttributes="Bold"></Label>
+                                                    <Label Grid.Row="2" Grid.Column="1" Text="Legajo:"  FontSize="20" FontAttributes="Bold" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="3" Grid.Column="1" Text="Sector:"  FontSize="20" FontAttributes="Bold" VerticalOptions="End"></Label>
+
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Grid.Column="1" Text="{Binding Usuario}" FontSize="20" FontAttributes="Italic"></Label>
+                                                    <Label Grid.Row="2" Grid.Column="2" Text="{Binding Legajo }"  FontSize="20" FontAttributes="Italic" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="3" Grid.Column="2" Text="{Binding Sector }"  FontSize="20" FontAttributes="Italic" VerticalOptions="End"></Label>
+                                                    
+                                                </StackLayout>
+                                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                                    <Image Source="edit.png" Grid.Column="3" WidthRequest="30"  HeightRequest="30" VerticalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:UserViewModel}}, Path=ProductTappedEdit}" CommandParameter="{Binding .}"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                     </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

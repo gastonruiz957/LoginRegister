@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Class="LoginRegister.Master"
+             Title="Master">
+    
+    <ContentPage.Content>
+        <StackLayout  Orientation="Vertical">
+            <Grid Margin="20,0,20,0" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Text="BIENVENIDO"  Grid.Column="0" TextColor="Black" FontSize="Title" HorizontalTextAlignment="Center" Margin="0,20,0,0"/>
+                <Label Text="{Binding Usuario, Mode=OneWay}" TextDecorations ="Underline" Grid.Row="1" Grid.Column="0" TextColor="Black" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="End" Margin="0,0,0,20" />
+
+                <Button Text="Registrar Movimiento" Grid.Row="2" Command="{Binding cmdGoToRegister}" Background="White"  Image="maquinaria3.png" />
+                <Button Text="Movimientos Cargados" Grid.Row="3" Command="{Binding cmdGoToMovList}"  Background="white"  Image="lista1.png"/>
+                <Button Text="Usuarios Cargados" Grid.Row="4" Command="{Binding cmdGoToUserList}" Background="white" Image="user.png"/>
+                <Button Text="Cerrar Sesion" Grid.Row="8" Command="{Binding cmdGoToLogin}" TextColor="White" Background="#E60000"/>
+
+            </Grid>
+            <!--<Button Text="Registrar Movimiento" Grid.Row="3" Command="{Binding cmdGoToRegister}" />-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

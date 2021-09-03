@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginRegister.Views.MovimientoHomePage"
+             Title="Direccion Provincial de Vialidad"
+             xmlns:vm="clr-namespace:LoginRegister.ViewModels">
+  
+    <ContentPage.BindingContext>
+        <vm:HomeMovimientoViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20" RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button Text="Registrar Movimiento" Grid.Row="3" BackgroundColor="#FFC300" TextColor="Black" Command="{Binding cmdGoToRegister}" />
+                    <Button Text="Movimientos Cargados" Grid.Row="4" BackgroundColor="#FFC300" TextColor="Black" Command="{Binding cmdGoToMovList}"/>
+                    <Button Text="Cerrar Sesiòn" Grid.Row="5" Command="{Binding cmdGoToLogin}"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

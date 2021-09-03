@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginRegister.Views.RegisterPage"
+             Title="Registrar Usuario"
+             xmlns:local="clr-namespace:LoginRegister.ViewModels">
+
+    <ContentPage.BindingContext>
+        <local:RegisterViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <!--<ScrollView>-->
+            <StackLayout>
+                <Grid Margin="20,0,20,0" RowSpacing="20" VerticalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0">
+                    <Label Text="*Todos los campos deben estar cargados" TextColor="Red" FontSize="Medium"/>
+                    <!--<Label x:Name="RegisterMessageLabel" Text="{Binding RegisterMessage, Mode=OneWay}" IsVisible="{Binding TurnRegisterMessage, Mode=OneWay}" TextColor="Red" FontSize="Medium"/>-->
+                    </StackLayout>
+                    <StackLayout Grid.Row="1">
+                        <Entry Placeholder="Nombre de Usuario" FontSize="16" x:Name="EntryUserName" Text="{Binding UserModel.Usuario , Mode=TwoWay}" ReturnType="Next"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="2">
+                        <Entry Placeholder="Contraseña" FontSize="16" x:Name="EntryUserPassword" Text="{Binding UserModel.Password, Mode=TwoWay}" ReturnType="Next"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="3">
+                        <Entry Placeholder="Sector" FontSize="16" x:Name="EntryUserSector" Text="{Binding UserModel.Sector, Mode=TwoWay}" ReturnType="Next"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="4">
+                        <Entry Placeholder="Legajo" FontSize="16" x:Name="EntryUserLegajo" Text="{Binding UserModel.Legajo, Mode=TwoWay}" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="5">
+                    <Button Text="Registrar" WidthRequest="100" TextColor="Black" BackgroundColor="#FFC300" Command="{Binding cmdRegister}"/>
+                    <Button Text="Cancelar" WidthRequest="100" Command="{Binding cmdCancel}" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        <!--</ScrollView>-->
+    </ContentPage.Content>
+</ContentPage>

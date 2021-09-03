@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:LoginRegister.ViewModels"
+             xmlns:model ="clr-namespace:LoginRegister.Models"
+             x:Class="LoginRegister.Views.MovimientosCargadosPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar Movimiento" Command="{Binding cmdAddMov}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <RefreshView x:DataType="local:MovimientoViewModel" Command="{Binding cmdLoadMov}" IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <CollectionView ItemsSource="{Binding MovimientoModels}" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:MovimientoModel">
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Eliminar" BackgroundColor="Red" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MovimientoViewModel}},Path=UserTappedDelete}" CommandParameter="{Binding .}"/>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Grid Padding="5">
+                                        <Frame CornerRadius="10" HasShadow="True">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="Maquinaria: " FontSize="15" FontAttributes="Bold"></Label>
+                                                    <!--<Label Grid.Row="2" Grid.Column="1" Text="Descripcion:"  FontSize="20" FontAttributes="Bold" VerticalOptions="End"></Label>-->
+                                                    <Label Grid.Row="3" Grid.Column="1" Text="Horometro(hs):"  FontSize="15" FontAttributes="Bold" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="4" Grid.Column="1" Text="Kilometros(km):"  FontSize="15" FontAttributes="Bold" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="5" Grid.Column="1" Text="Combustible:"  FontSize="15" FontAttributes="Bold" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="6" Grid.Column="1" Text="Fecha de carga:"  FontSize="15" FontAttributes="Bold" VerticalOptions="End"></Label>
+
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Maquinarias}" FontSize="15" FontAttributes="Italic" LineBreakMode="MiddleTruncation"></Label>
+                                                    <!--<Label Grid.Row="2" Grid.Column="2" Text="{Binding Descripcion}" FontSize="20" FontAttributes="Italic" VerticalOptions="End"></Label>-->
+                                                    <Label Grid.Row="3" Grid.Column="2" Text="{Binding Horometro}" FontSize="15" FontAttributes="Italic" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="4" Grid.Column="2" Text="{Binding Kilometraje}" FontSize="15" FontAttributes="Italic" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="5" Grid.Column="2" Text="{Binding Combustible}" FontSize="15" FontAttributes="Italic" VerticalOptions="End"></Label>
+                                                    <Label Grid.Row="6" Grid.Column="2" Text="{Binding FechaCarga}" FontSize="15" FontAttributes="Italic" VerticalOptions="End"></Label>
+
+
+
+                                                </StackLayout>
+                                                <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                                    <Image Source="edit.png" Grid.Column="3" WidthRequest="25"  HeightRequest="25" VerticalOptions="End">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type local:MovimientoViewModel}}, Path=ProductTappedEdit}" CommandParameter="{Binding .}"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                </SwipeView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
