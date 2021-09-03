@@ -14,6 +14,7 @@ namespace LoginRegister.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        //ESTO ES UN CAMBIO EN LOGINPAGE.XAML.CS DE GASTON
         public UserModel UserModel { get; set; }
         public LoginPage()
         {
